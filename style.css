@@ -1393,8 +1393,8 @@ header.scrolled .logo span {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
     margin-bottom: 50px;
 }
 
@@ -1444,6 +1444,112 @@ header.scrolled .logo span {
     text-align: center;
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.8rem;
+}
+
+.footer-cities {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Statutory Registrations Section */
+.registrations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.reg-card {
+    background: var(--color-white);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e1e8f0;
+    transition: var(--transition-smooth);
+}
+
+.reg-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 86, 210, 0.08);
+    border-color: var(--color-primary);
+}
+
+.reg-card i {
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.reg-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.reg-card p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+/* Credentials Section */
+.credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.credential-card {
+    background: var(--color-white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid #e1e8f0;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.credential-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.credential-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 86, 210, 0.1);
+}
+
+.credential-card:hover::before {
+    transform: scaleY(1);
+}
+
+.credential-card i {
+    width: 40px;
+    height: 40px;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+}
+
+.credential-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+}
+
+.credential-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
 }
 
 /* Animations */
@@ -1866,8 +1972,19 @@ header.scrolled .logo span {
 
     .services-grid,
     .leadership-grid,
-    .projects-grid {
+    .projects-grid,
+    .credentials-grid {
         grid-template-columns: 1fr;
+    }
+
+    .registrations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .visionary-card {
