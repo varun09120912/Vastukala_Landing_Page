@@ -859,6 +859,8 @@ header.scrolled .logo span {
     transform: scale(1.05);
     transition-delay: 3s;
     /* User requested 3 sec hover delay */
+    border-color: var(--color-accent);
+    /* Glow effect on hover */
     border-bottom-color: var(--color-accent);
     z-index: 10;
 }
