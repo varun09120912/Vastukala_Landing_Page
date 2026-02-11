@@ -1973,6 +1973,22 @@ header.scrolled .logo span {
     .section-title {
         font-size: 1.8rem;
     }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+
+    .logo span {
+        font-size: 0.6rem;
+    }
+
+    .brand-logo {
+        height: 35px;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
 }
 
 /* Branding Assets */
