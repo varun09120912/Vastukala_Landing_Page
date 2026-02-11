@@ -1570,7 +1570,6 @@ header.scrolled .logo span {
 }
 
 .stat-icon {
-    display: block;
     margin-bottom: 1rem;
     color: var(--color-accent);
 }
