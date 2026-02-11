@@ -63,10 +63,11 @@ h5 {
 }
 
 .container {
-    max-width: var(--container-width);
+    width: 90%;
+    max-width: 1400px;
+    /* Increased from default */
     margin: 0 auto;
-    padding: 0 5%;
-    /* Percentage padding for better fluid scaling */
+    padding: 0 1.5rem;
 }
 
 .section-padding {
@@ -563,11 +564,28 @@ header.scrolled .logo span {
     }
 }
 
-/* About Section: Premium Split Layout */
+/* About Section: Premium About Section */
 .about-section {
     position: relative;
     overflow: hidden;
     background-color: var(--color-white);
+}
+
+.about-section .section-header {
+    text-align: left;
+    /* Left align for About section only */
+    margin-bottom: 3rem;
+}
+
+.about-section .section-header .section-title {
+    max-width: 800px;
+    /* Allow title to stretch more */
+    margin-left: 0;
+}
+
+.about-section .animated-line {
+    margin: 1.5rem 0;
+    /* Align line to left */
 }
 
 .about-grid {
@@ -640,17 +658,24 @@ header.scrolled .logo span {
 
 .brand-watermark {
     position: absolute;
-    top: -50px;
+    top: -30px;
     left: -20px;
-    font-size: 10rem;
+    font-size: 8rem;
     font-weight: 900;
-    color: rgba(0, 86, 210, 0.04);
+    color: rgba(0, 86, 210, 0.03);
+    z-index: -1;
     font-family: var(--font-heading);
-    z-index: 0;
-    user-select: none;
 }
 
 /* Right: Content Column */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2rem;
+    /* Add spacing from image */
+}
+
 .about-content .tag {
     margin-bottom: 1rem;
     margin-top: 0;
@@ -1852,6 +1877,10 @@ header.scrolled .logo span {
         border: none;
         color: var(--color-primary);
         cursor: pointer;
+    }
+
+    .section-padding {
+        padding: 60px 0;
     }
 
     .mobile-menu-btn.active i {
