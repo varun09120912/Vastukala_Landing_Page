@@ -66,6 +66,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+
+            // Toggle icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Close menu when clicking a link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+    }
+
+    // Header Scroll Effect
+
     // Intersection Observer for Reveal Animations
     const observerOptions = {
         threshold: 0.1,
@@ -221,39 +255,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Services Slider Logic
+    // Services Slider Logic (Responsive)
     const servicesSlider = document.querySelector('.services-slider');
     const nextServicesBtn = document.querySelector('.next-services');
     const prevServicesBtn = document.querySelector('.prev-services');
 
     if (servicesSlider && nextServicesBtn && prevServicesBtn) {
         let counter = 0;
-        const getCardWidth = () => {
+
+        const updateSliderPosition = () => {
             const card = document.querySelector('.service-card');
-            return card ? card.offsetWidth + 32 : 382; // card width + gap
+            if (!card) return;
+
+            const cardStyle = window.getComputedStyle(card);
+            const cardWidth = card.offsetWidth + parseInt(cardStyle.marginRight);
+            servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
         };
 
         nextServicesBtn.addEventListener('click', () => {
-            const cardWidth = getCardWidth();
+            const card = document.querySelector('.service-card');
+            const cardWidth = card.offsetWidth + 32; // width + gap
             const maxScroll = servicesSlider.scrollWidth - servicesSlider.parentElement.clientWidth;
-            if (Math.abs(counter * cardWidth) < maxScroll) {
+
+            if (Math.abs((counter + 1) * cardWidth) <= maxScroll + 10) {
                 counter++;
-                servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
             } else {
-                counter = 0; // Loop back to start
-                servicesSlider.style.transform = `translateX(0)`;
+                counter = 0; // Loop back
             }
+            updateSliderPosition();
         });
 
         prevServicesBtn.addEventListener('click', () => {
-            const cardWidth = getCardWidth();
             if (counter > 0) {
                 counter--;
-                servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
+                updateSliderPosition();
             }
+        });
+
+        // Adjust position on resize
+        window.addEventListener('resize', () => {
+            counter = 0; // Reset to start on resize to avoid position issues
+            updateSliderPosition();
         });
     }
 
-    refreshIcons();
-    setTimeout(refreshIcons, 500); // Pulse check for any late renders
+    lucide.createIcons();
 });
