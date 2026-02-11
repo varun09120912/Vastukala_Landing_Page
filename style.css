@@ -840,7 +840,8 @@ header.scrolled .logo span {
     padding: 3rem 2rem;
     border-radius: 12px;
     border-bottom: 4px solid transparent;
-    transition: var(--transition-smooth);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    transition-delay: 0s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     background-size: cover;
     background-position: center;
@@ -848,8 +849,17 @@ header.scrolled .logo span {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    min-height: 420px;
+    min-height: 480px;
+    /* Increased for better image visibility */
     color: var(--color-white);
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    transition-delay: 3s;
+    /* User requested 3 sec hover delay */
+    border-bottom-color: var(--color-accent);
+    z-index: 10;
 }
 
 .service-card::before {
@@ -864,10 +874,6 @@ header.scrolled .logo span {
     transition: var(--transition-smooth);
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    border-bottom-color: var(--color-accent);
-}
 
 .service-card:hover::before {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.95) 100%);
@@ -890,6 +896,14 @@ header.scrolled .logo span {
     margin-bottom: 1.5rem;
     color: var(--color-accent);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Ensure internal icon is centered */
+    line-height: 0;
+}
+
+.service-icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .service-card h3 {
