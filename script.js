@@ -133,26 +133,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission (Simulated)
+    // Form Submission (Real submission to Formspree via AJAX)
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
+            const formData = new FormData(contactForm);
+
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerText = 'Message Sent!';
-                btn.style.backgroundColor = '#25D366';
-                contactForm.reset();
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    btn.innerText = 'Message Sent!';
+                    btn.style.backgroundColor = '#25D366';
+                    contactForm.reset();
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = '';
+                        btn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                btn.innerText = 'Error! Try again.';
+                btn.style.backgroundColor = '#ff4d4d';
                 setTimeout(() => {
                     btn.innerText = originalText;
                     btn.style.backgroundColor = '';
                     btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            }
         });
     }
 

@@ -532,20 +532,20 @@
                             </div>
                         </div>
 
-                        <a href="https://wa.me/91123456789" class="btn btn-whatsapp">
+                        <a href="https://wa.me/918999202123" class="btn btn-whatsapp">
                             <i data-lucide="message-circle"></i> Chat on WhatsApp
                         </a>
                     </div>
                     <div class="contact-form-container reveal-right">
-                        <form class="contact-form">
+                        <form action="https://formspree.io/f/mnpvebza" method="POST" class="contact-form">
                             <div class="form-group">
-                                <input type="text" placeholder="Your Name" required>
+                                <input type="text" name="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" placeholder="Email Address" required>
+                                <input type="email" name="email" placeholder="Email Address" required>
                             </div>
                             <div class="form-group">
-                                <select required>
+                                <select name="service" required>
                                     <option value="" disabled selected>Select Service</option>
                                     <option value="valuation">Valuation</option>
                                     <option value="tev">TEV Services</option>
@@ -555,7 +555,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <textarea placeholder="Project Brief" rows="4" required></textarea>
+                                <textarea name="message" placeholder="Project Brief" rows="4" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary full-width">Send Message</button>
                         </form>
