@@ -463,20 +463,8 @@ header.scrolled .logo span {
 }
 
 .dot.active {
-    background: var(--color-accent);
-    display: flex;
-    align-items: center;
-    position: relative;
-    background-color: var(--color-white);
-    background-image:
-        radial-gradient(circle at 70% 30%, rgba(0, 86, 210, 0.05) 0%, transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-        url('hero_vcipl_corporate.png');
-    background-size: cover;
-    background-position: center;
-    color: var(--color-text);
-    padding-top: var(--header-height);
-    overflow: hidden;
+    background: var(--color-white);
+    width: 60px;
 }
 
 .hero-shapes {
@@ -1801,8 +1789,33 @@ header.scrolled .logo span {
     }
 
     .hero-dots .dot {
-        width: 40px;
+        width: 30px;
         height: 6px;
+    }
+
+    .hero-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-btn i {
+        width: 20px;
+        height: 20px;
+    }
+
+    .hero-slider .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
     }
 
     .about-visual {
