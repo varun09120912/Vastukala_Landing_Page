@@ -199,12 +199,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Refresh Icons with a small safety delay
-    const refreshIcons = () => {
-        if (window.lucide) {
-            window.lucide.createIcons();
-        }
-    };
+    // Services Slider Logic
+    const servicesSlider = document.querySelector('.services-slider');
+    const nextServicesBtn = document.querySelector('.next-services');
+    const prevServicesBtn = document.querySelector('.prev-services');
+
+    if (servicesSlider && nextServicesBtn && prevServicesBtn) {
+        let counter = 0;
+        const getCardWidth = () => {
+            const card = document.querySelector('.service-card');
+            return card ? card.offsetWidth + 32 : 382; // card width + gap
+        };
+
+        nextServicesBtn.addEventListener('click', () => {
+            const cardWidth = getCardWidth();
+            const maxScroll = servicesSlider.scrollWidth - servicesSlider.parentElement.clientWidth;
+            if (Math.abs(counter * cardWidth) < maxScroll) {
+                counter++;
+                servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
+            } else {
+                counter = 0; // Loop back to start
+                servicesSlider.style.transform = `translateX(0)`;
+            }
+        });
+
+        prevServicesBtn.addEventListener('click', () => {
+            const cardWidth = getCardWidth();
+            if (counter > 0) {
+                counter--;
+                servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
+            }
+        });
+    }
 
     refreshIcons();
     setTimeout(refreshIcons, 500); // Pulse check for any late renders
