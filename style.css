@@ -1806,8 +1806,19 @@ header.scrolled .logo span {
     }
 
     .about-visual {
+        display: block;
+        /* Show visual container */
+        margin-bottom: 3rem;
+    }
+
+    .main-image {
+        height: 300px;
+        border-radius: 12px;
+    }
+
+    .brand-watermark {
         display: none;
-        /* Hide visual on mobile to focus on logo/stats */
+        /* Hide watermark on mobile to reduce clutter */
     }
 
     .about-logo {
@@ -1864,6 +1875,20 @@ header.scrolled .logo span {
 
     .visionary-info p {
         font-size: 1rem;
+    }
+
+    .client-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 logos per row on mobile */
+        gap: 1rem;
+    }
+
+    .client-logo {
+        height: 100px;
+    }
+
+    .client-logo img {
+        max-height: 50px;
     }
 
     .footer-grid {
