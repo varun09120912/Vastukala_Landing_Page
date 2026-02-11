@@ -1831,8 +1831,22 @@ header.scrolled .logo span {
     }
 
     .main-image {
-        height: 300px;
+        height: 250px;
         border-radius: 12px;
+    }
+
+    .experience-badge {
+        padding: 1rem;
+        bottom: -20px;
+        right: 20px;
+    }
+
+    .experience-badge .years {
+        font-size: 2rem;
+    }
+
+    .experience-badge .label {
+        font-size: 0.7rem;
     }
 
     .brand-watermark {
@@ -1853,7 +1867,7 @@ header.scrolled .logo span {
     .split-layout,
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3rem;
     }
 
     .about-stats {
