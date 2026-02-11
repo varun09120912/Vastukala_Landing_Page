@@ -1840,8 +1840,30 @@ header.scrolled .logo span {
     }
 
     .services-grid,
-    .leadership-grid {
+    .leadership-grid,
+    .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .visionary-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .leader-image-placeholder.main-leader {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .visionary-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .visionary-info p {
+        font-size: 1rem;
     }
 
     .footer-grid {
@@ -1870,6 +1892,14 @@ header.scrolled .logo span {
     .slider-btn {
         width: 50px;
         height: 50px;
+    }
+
+    .project-card {
+        margin-bottom: 2rem;
+    }
+
+    .project-image {
+        height: 200px;
     }
 }
 
