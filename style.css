@@ -1425,6 +1425,12 @@ header.scrolled .logo span {
     background-color: #f0f4f8;
 }
 
+.leader-image-wrapper.main-leader-img {
+    width: 250px;
+    height: 250px;
+    border-color: var(--color-primary);
+}
+
 .leader-photo {
     width: 100%;
     height: 100%;
