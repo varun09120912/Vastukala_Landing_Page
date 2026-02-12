@@ -263,21 +263,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (servicesSlider && nextServicesBtn && prevServicesBtn) {
         let counter = 0;
 
-        const updateSliderPosition = () => {
+        const getCardWidth = () => {
             const card = document.querySelector('.service-card');
-            if (!card) return;
+            if (!card) return 0;
+            const style = window.getComputedStyle(servicesSlider);
+            const gap = parseFloat(style.gap) || 32; // Default to 32 if gap not set, but try to read it
+            return card.offsetWidth + gap;
+        };
 
-            const cardStyle = window.getComputedStyle(card);
-            const cardWidth = card.offsetWidth + parseInt(cardStyle.marginRight);
-            servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
+        const updateSliderPosition = () => {
+            const cardWidth = getCardWidth();
+            if (cardWidth > 0) {
+                servicesSlider.style.transform = `translateX(-${counter * cardWidth}px)`;
+            }
         };
 
         nextServicesBtn.addEventListener('click', () => {
-            const card = document.querySelector('.service-card');
-            const cardWidth = card.offsetWidth + 32; // width + gap
-            const maxScroll = servicesSlider.scrollWidth - servicesSlider.parentElement.clientWidth;
+            const cardWidth = getCardWidth();
+            if (cardWidth === 0) return;
 
-            if (Math.abs((counter + 1) * cardWidth) <= maxScroll + 10) {
+            const containerWidth = servicesSlider.parentElement.clientWidth;
+            const scrollWidth = servicesSlider.scrollWidth;
+            const maxScroll = scrollWidth - containerWidth;
+
+            // Calculate max counter estimate
+            const maxCounter = Math.ceil(maxScroll / cardWidth);
+
+            if (counter < maxCounter) {
                 counter++;
             } else {
                 counter = 0; // Loop back
