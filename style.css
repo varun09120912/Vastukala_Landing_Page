@@ -788,7 +788,7 @@ header.scrolled .logo span {
 }
 
 .services-slider .service-card {
-    flex: 0 0 350px;
+    flex: 0 0 min(350px, 90vw);
     margin-bottom: 0;
 }
 
@@ -1870,6 +1870,7 @@ header.scrolled .logo span {
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
+        width: 100%;
     }
 
     header {
@@ -1930,8 +1931,8 @@ header.scrolled .logo span {
     }
 
     .hero-section h1 {
-        font-size: 2.8rem;
-        line-height: 1.1;
+        font-size: clamp(2rem, 10vw, 3rem);
+        line-height: 1.2;
     }
 
     .hero-slider .slide-content {
