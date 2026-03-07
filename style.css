@@ -406,7 +406,7 @@ header.scrolled .logo span {
 
 .hero-slider .hero-actions {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     transform: translateY(30px);
     opacity: 0;
     transition: var(--transition-slow) 0.7s;
