@@ -1941,8 +1941,21 @@ header.scrolled .logo span {
     }
 
     .hero-section h1 {
-        font-size: clamp(2rem, 10vw, 3rem);
-        line-height: 1.2;
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        line-height: 1.1;
+    }
+
+    .hero-content {
+        padding-top: 100px;
+        /* Prevent header overlap */
+    }
+
+    .brand-logo {
+        height: 35px;
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
     }
 
     .hero-slider .slide-content {
@@ -2014,7 +2027,7 @@ header.scrolled .logo span {
     }
 
     .brand-watermark {
-        display: none;
+        display: none !important;
         /* Hide watermark on mobile to reduce clutter */
     }
 
@@ -2160,6 +2173,21 @@ header.scrolled .logo span {
 
     .stat-number {
         font-size: 1.75rem;
+    }
+}
+
+/* Hide any other decorative background text patterns */
+@media (max-width: 768px) {
+
+    [class*="background-text"],
+    [class*="decorative-text"],
+    .accent-text-stroke {
+        display: none !important;
+    }
+
+    .hero-slider .hero-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 }
 
