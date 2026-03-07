@@ -169,12 +169,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission (Real submission to Formspree via AJAX)
     const contactForm = document.querySelector('.contact-form');
+
+    function sanitizeInput(text) {
+        if (typeof text !== 'string') return text;
+        return text
+            .trim()
+            .replace(/[&<>"']/g, function (m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[m];
+            });
+    }
+
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
+
             const formData = new FormData(contactForm);
+            const sanitizedData = new URLSearchParams();
+
+            for (const [key, value] of formData.entries()) {
+                sanitizedData.append(key, sanitizeInput(value));
+            }
 
             btn.innerText = 'Sending...';
             btn.disabled = true;
@@ -182,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
-                    body: formData,
+                    body: sanitizedData,
                     headers: {
                         'Accept': 'application/json'
                     }
